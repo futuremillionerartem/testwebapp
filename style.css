@@ -1,4 +1,6 @@
 body {
+    display: flex;
+    justify-content: center;
     background: -webkit-linear-gradient(45deg, rgb(219, 219, 219), rgb(153, 153, 153));
     background: -moz-linear-gradient(45deg, rgb(219, 219, 219), rgb(153, 153, 153));
     background: linear-gradient(45deg, rgb(219, 219, 219), rgb(153, 153, 153));
