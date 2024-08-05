@@ -97,16 +97,19 @@
 .plus-one {
     position: absolute;
     font-family: 'Londrina Solid', sans-serif;
-    text-shadow: 0px 0px 4px rgba(234, 182, 64, 0.25);
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     font-size: 24px;
     font-weight: 800;
-    background: linear-gradient(180deg, #313131 0%, #000000 100%);
+    background: linear-gradient(180deg, #ff0000 0%, #000000 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     pointer-events: none;
     user-select: none;
     animation: move-up 2s forwards;
+}
+.circle {
+  position: relative;
 }
 
 @keyframes move-up {
@@ -128,7 +131,9 @@
             <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
             <p id="score">0</p>
         </div>
-        <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
+        <div class="circle">
+            <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
+        </div>
         <div class="down">
             <img src="templates/Token.png" alt="" class="up">
             <img src="templates/Token.png" alt="" class="up">
