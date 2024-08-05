@@ -1,4 +1,16 @@
-body, html {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер</title>
+    <link rel="stylesheet" href="styles/fix.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+       body, html {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -107,3 +119,23 @@ body, html {
         transform: translateY(-50px);
     }
 }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
+            <p id="score">0</p>
+        </div>
+        <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
+        <div class="down">
+            <img src="templates/Token.png" alt="" class="up">
+            <img src="templates/Token.png" alt="" class="up">
+            <img src="templates/Token.png" alt="" class="up">
+            <img src="templates/Token.png" alt="" class="up">
+        </div>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
