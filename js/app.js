@@ -43,8 +43,8 @@ $clickableImage.addEventListener('click', (event) => {
     const plusOne = document.createElement('div');
     plusOne.classList.add('plus-one');
     plusOne.textContent = '+1';
-    plusOne.style.left = `${event.clientX - rect.left/20}px`;
-    plusOne.style.top = `${event.clientY - rect.top/20}px`;
+    plusOne.style.left = `${event.clientX - rect.left}px`;
+    plusOne.style.top = `${event.clientY - rect.top}px`;
 
     $clickableImage.parentElement.appendChild(plusOne);
 
