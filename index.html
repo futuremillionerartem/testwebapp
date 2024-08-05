@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    <title>Кликер</title>
     <link rel="stylesheet" href="styles/fix.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,13 @@
         .panda-img {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
+            transition: transform 0.2s ease; /* Плавный переход для трансформации */
+            --tiltX: 0deg;
+            --tiltY: 0deg;
+            transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
         }
+
         .up {
             height: 50px;
             display: flex;
@@ -59,24 +65,49 @@
             margin-left: 10px;
             margin-right: 10px;
         }
-        .mini_token{
+        .mini_token {
             height: 30px;
             margin-left: -20px;
             margin-right: 20px;
         }
         .header p {
             font-size: 40px;
- 
         }
+        .plus-one {
+            position: absolute;
+            font-family: 'Londrina Solid', sans-serif;
+            text-shadow: 0px 0px 4px rgba(234, 182, 64, 0.25);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(180deg, #000000 0%, #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
+            user-select: none;
+            animation: move-up 2s forwards;
+        }
+
+        @keyframes move-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="templates/Token.png" alt="" class="mini_token">
-            <p>13 291 00</p>
+            <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
+            <p id="score">0</p>
         </div>
-        <img src="templates/Token.png" alt="Responsive Image" class="panda-img">
+        <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
         <div class="down">
             <img src="templates/Token.png" alt="" class="up">
             <img src="templates/Token.png" alt="" class="up">
@@ -84,5 +115,6 @@
             <img src="templates/Token.png" alt="" class="up">
         </div>
     </div>
+    <script src="js/app.js" defer></script>
 </body>
 </html>
