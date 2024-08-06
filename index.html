@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
     <title>Кликер</title>
     <link rel="stylesheet" href="styles/fix.css">
     <link rel="stylesheet" href="styles/style.css">
@@ -12,103 +11,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap" rel="stylesheet">
     <style>
        body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    font-family: 'Londrina Solid', sans-serif;
-}
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        font-family: 'Londrina Solid', sans-serif;
+        user-select: none;
+        }
 
-.container {
-    max-width: 75%;
-    max-height: 100%;
-    text-align: center;
-}
+        .container {
+            max-width: 75%;
+            max-height: 100%;
+            text-align: center;
+        }
 
-.header {
-    display: flex;
-    justify-content: center;
-    background-color: #2d2d2d;
-    color: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    height: 60px;
-    align-items: center;
-}
-
-.down {
-    display: flex;
-    justify-content: center;
-    background-color: #2d2d2d;
-    color: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    height: 80px;
-    align-items: center;
-    margin-top: 80px;
-}
-
-.panda-img {
-    max-width: 100%;
-    transition: transform 0.2s ease;
-    --tiltX: 0deg;
-    --tiltY: 0deg;
-    transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
-    border-radius: 50%;
-}
+        .header {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 60px;
+            align-items: center;
+        }
 
 
-.up {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
-}
+        .menu-item {
+            text-align: center;
+            flex: 1;
+        }
 
-.mini_token {
-    height: 30px;
-    margin-left: -20px;
-    margin-right: 20px;
-}
+        .menu-item img {
+            width: 40px;
+            height: 40px;
+        }
 
-.header p {
-    font-size: 40px;
-}
+        .menu-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
 
-.plus-one {
-    position: absolute;
-    font-family: 'Londrina Solid', sans-serif;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    font-size: 24px;
-    font-weight: 800;
-    background: linear-gradient(180deg, #ff0000 100%, #ff0000 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    pointer-events: none;
-    user-select: none;
-    animation: move-up 2s forwards;
-}
-.circle {
-  position: relative;
-}
+        .panda-img {
+            max-width: 100%;
+            transition: transform 0.2s ease;
+            --tiltX: 0deg;
+            --tiltY: 0deg;
+            transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
+            border-radius: 50%;
+        }
 
-@keyframes move-up {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-}
+
+        .up {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .mini_token {
+            height: 30px;
+            margin-left: -20px;
+            margin-right: 20px;
+        }
+
+        .header p {
+            font-size: 40px;
+        }
+
+        .plus-one {
+            position: absolute;
+            font-family: 'Londrina Solid', sans-serif;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(180deg, #000000 100%, #000000 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
+            user-select: none;
+            animation: move-up 2s forwards;
+        }
+        .circle {
+        position: relative;
+        }
+        .menu-item img{
+            margin: 0 auto;
+            height: 50px;
+            width: auto;
+        }
+        .down {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            height: 90px;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        @keyframes move-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
 
     </style>
 </head>
@@ -122,10 +142,22 @@
             <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
         </div>
         <div class="down">
-            <img src="templates/Token.png" alt="" class="up">
-            <img src="templates/Token.png" alt="" class="up">
-            <img src="templates/Token.png" alt="" class="up">
-            <img src="templates/Token.png" alt="" class="up">
+            <div class="menu-item">
+                <img src="templates/Tap.png" alt="Tap Icon">
+                <p>Tap</p>
+            </div>
+            <div class="menu-item">
+                <img src="templates/Task.png" alt="Task Icon">
+                <p>Task</p>
+            </div>
+            <div class="menu-item">
+                <img src="templates/Hyman.png" alt="Ref Icon">
+                <p>Ref</p>
+            </div>
+            <div class="menu-item">
+                <img src="templates/Rocket.png" alt="Boost Icon">
+                <p>Boost</p>
+            </div>
         </div>
     </div>
     <script src="js/app.js" defer></script>
