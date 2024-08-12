@@ -1,7 +1,7 @@
 const $clickableImage = document.querySelector('#clickable-image');
 const $score = document.querySelector('#score');
 const $energyBar = document.querySelector('#energy-bar');
-const $energyText = document.querySelector('#energy-text');
+const $energyText = document.querySelector('#energy-value'); // Изменено
 
 function getScore() {
     return Number(localStorage.getItem('score')) || 0;
@@ -85,7 +85,7 @@ let energyRegenInterval;
 
 function updateEnergyBar() {
     $energyBar.style.width = `${energy}%`;
-    $energyText.textContent = `${energy}/100`;
+    $energyText.textContent = `${energy}/100`; // Изменено
     if (energy <= 100) {
         clearInterval(energyRegenInterval);
         energyRegenInterval = setInterval(regenEnergy, 1200);
