@@ -22,11 +22,6 @@ function setEnergy(newEnergy) {
     updateEnergyBar();
 }
 
-function updateImage() {
-    if (getScore() >= 50) {
-        $clickableImage.src = 'templates/Token.png'; // Обнови путь, если нужно
-    }
-}
 
 function addOne() {
     setScore(getScore() + 1);
