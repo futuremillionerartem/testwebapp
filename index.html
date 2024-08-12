@@ -29,7 +29,11 @@
             max-height: 100%;
             text-align: center;
         }
-
+        .main-header {
+            width: 100%;
+            display: flex;
+            text-align: center;
+        }
         .header {
             display: flex;
             justify-content: center;
@@ -40,8 +44,21 @@
             margin-bottom: 40px;
             height: 60px;
             align-items: center;
+            width: 58%;
+            margin-right: 2%;
         }
-
+        .header-2 {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 60px;
+            align-items: center;
+            width: 40%;
+        }
 
         .menu-item {
             text-align: center;
@@ -80,13 +97,13 @@
         }
 
         .mini_token {
-            height: 30px;
-            margin-left: -20px;
-            margin-right: 20px;
+            height: 40px;
+            margin-left: 0px;
+            margin-right: 5px;
         }
 
         .header p {
-            font-size: 40px;
+            font-size: 30px;
             -webkit-text-stroke: 0.8px #000000;
         }
 
@@ -111,7 +128,7 @@
         }
         .menu-item img{
             margin: 0 auto;
-            height: 50px;
+            height: 45px;
             width: auto;
         }
         .menu-item p {
@@ -127,13 +144,13 @@
             color: #fff;
             padding: 10px;
             border-radius: 10px;
-            height: 90px;
+            height: 70px;
             align-items: center;
             margin-top: -1%;
         }
         .energy-bar-container {
             width: 97%;
-            height: 20px;
+            height: 14px;
             background-color: #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
@@ -186,9 +203,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
-            <p id="score">0</p>
+        <div class="main-header">
+            <div class="header">
+                <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
+                <p id="score">0</p>
+            </div>
+            <div class="header-2">
+                <img src="templates/AVA2.png" alt="" class="mini_token" id="token-icon">
+                <p id="score">LEGENDARY</p>
+            </div>
         </div>
             <div class="circle">
                 <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
