@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 75%;
+            max-width: 90%;
             max-height: 100%;
             text-align: center;
         }
@@ -59,7 +59,7 @@
         }
 
         .panda-img {
-            max-width: 100%;
+            max-width: 70%;
             transition: transform 0.2s ease;
             --tiltX: 0deg;
             --tiltY: 0deg;
@@ -101,7 +101,9 @@
             animation: move-up 2s forwards;
         }
         .circle {
-        position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .menu-item img{
             margin: 0 auto;
@@ -142,15 +144,7 @@
             color: #ffffff;
             -webkit-text-stroke: 0.8px #000000;
         }
-        .energy-icon {
-            display: flex;
-            width: auto;
-            height: 25px;
-            align-items: center;
-            justify-content: center;
-            margin-left: 33%; /* Отступ справа от иконки */
-            margin-bottom: -33px;
-        }
+
         .energy {
             height: 31px;
             margin-bottom: 20px;
@@ -182,11 +176,10 @@
             <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
             <p id="score">0</p>
         </div>
-        <div class="circle">
-            <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
-        </div>
+            <div class="circle">
+                <img src="templates/Token.png" alt="Responsive Image" class="panda-img" id="clickable-image">
+            </div>    
         <div class="energy-text" id="energy-text">
-            <img src="templates/lightning.png" alt="Energy Icon" class="energy-icon">
             <p id="energy-value">100/100</p>
         </div>
         <div class="energy">
