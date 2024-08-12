@@ -19,13 +19,12 @@
         align-items: center;
         justify-content: center;
         background: rgb(255, 255, 255);
-
         font-family: 'Londrina Solid', sans-serif;
         user-select: none;
         }
 
         .container {
-            max-width: 90%;
+            max-width: 95%;
             max-height: 100%;
             text-align: center;
         }
@@ -33,6 +32,32 @@
             width: 100%;
             display: flex;
             text-align: center;
+            margin-top: 10%;
+        }
+        .balance-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 12px;
+            padding: 3%;
+            align-items: center;
+            border-radius: 7px;
+            margin-bottom: -9%;
+            height: 36px;
+            padding-top: 3%;
+        }
+        .balance-info img {
+            height: 25px;
+            margin-right: 20%;
+        }
+        .UP {
+            display: flex;
+        }
+        .procent {
+            display: flex;
+            width: 90%;
+            justify-content: space-between;
         }
         .header {
             display: flex;
@@ -203,6 +228,27 @@
 </head>
 <body>
     <div class="container">
+        <div class="balance-info">
+            <div class="procent">
+                <div class="UP">
+                    <img src="templates/UP-panda.png" alt="">
+                    <p>12.33</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-cup.png" alt="">
+                    <p>2</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-energy.png" alt="">
+                    <p>16</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-task.png" alt="">
+                    <p>0</p>
+                </div>
+            </div>
+            
+        </div>
         <div class="main-header">
             <div class="header">
                 <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
