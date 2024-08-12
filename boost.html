@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Кликер</title>
+    <link rel="stylesheet" href="styles/fix.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+       body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(255, 255, 255);
+
+        font-family: 'Londrina Solid', sans-serif;
+        user-select: none;
+        }
+
+        .container {
+            max-width: 90%;
+            max-height: 100%;
+            text-align: center;
+        }
+        .main-header {
+            width: 100%;
+            display: flex;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 60px;
+            align-items: center;
+            width: 58%;
+            margin-right: 2%;
+        }
+        .header-2 {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 60px;
+            align-items: center;
+            width: 40%;
+        }
+
+        .menu-item {
+            text-align: center;
+            flex: 1;
+            margin-top: 10px;
+        }
+
+        .menu-item img {
+            width: 40px;
+            height: 40px;
+            
+        }
+
+        .menu-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+           
+        }
+
+        .panda-img {
+            max-width: 80%;
+            transition: transform 0.2s ease;
+            --tiltX: 0deg;
+            --tiltY: 0deg;
+            transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
+            border-radius: 50%;
+        }
+
+
+        .up {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .mini_token {
+            height: 40px;
+            margin-left: 0px;
+            margin-right: 5px;
+        }
+
+        .header p {
+            font-size: 30px;
+            -webkit-text-stroke: 0.8px #000000;
+        }
+
+        .plus-one {
+            position: absolute;
+            font-family: 'Londrina Solid', sans-serif;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(180deg, #000000 100%, #5a5a5a 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
+            user-select: none;
+            animation: move-up 2s forwards;
+        }
+        .circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-item img{
+            margin: 0 auto;
+            height: 45px;
+            width: auto;
+        }
+        .menu-item p {
+            font-size: 20px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+            margin-top: -4px;
+        }
+        .down {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            height: 70px;
+            align-items: center;
+            margin-top: -1%;
+        }
+        .energy-bar-container {
+            width: 97%;
+            height: 14px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .energy-bar {
+            width: 100%;
+            height: 100%;
+            background-color: #727272;
+            transition: width 0.2s ease;
+        }
+
+        .energy-text {
+            text-align: center;
+            font-size: 25px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+            margin-top: 3%;
+            margin-bottom: 1%;
+        }
+
+
+        .energy {
+            height: 31px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #312e2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+
+
+        @keyframes move-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-header">
+            <div class="header">
+                <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
+                <p id="score">0</p>
+            </div>
+            <div class="header-2">
+                <img src="templates/AVA2.png" alt="" class="mini_token" id="token-icon">
+                <p id="score">LEGENDARY</p>
+            </div>
+        </div>
+            <div class="circle">
+                <img src="templates/herlok.jpg" alt="Responsive Image" class="panda-img" id="clickable-image">
+            </div>    
+        <div class="energy-text" id="energy-text">
+            <p id="energy-value" class="energy-scale">100/100</p>
+        </div>
+        <div class="energy">
+            <div class="energy-bar-container">
+                <div class="energy-bar" id="energy-bar"></div>
+            </div>
+        </div>        
+        <div class="down">
+            <div class="menu-item">
+                <img src="templates/herlok.jpg" alt="Tap Icon">
+                <p>Tap</p>
+            </div>
+            <div class="menu-item">
+                <img src="templates/Task.png" alt="Task Icon">
+                <p>Task</p>
+            </div>
+            <div class="menu-item">
+                <img src="templates/Hyman.png" alt="Ref Icon">
+                <p>Ref</p>
+            </div>
+            <div class="menu-item">
+                <a href="index.html">
+                    <div class="circle-white">
+                        <img src="templates/Rocket.png" alt="Boost Icon" url>
+                    </div>
+                </a> 
+                <p>Boost</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
