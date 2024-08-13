@@ -1,7 +1,8 @@
 const $clickableImage = document.querySelector('#clickable-image');
 const $score = document.querySelector('#score');
 const $energyBar = document.querySelector('#energy-bar');
-const $energyText = document.querySelector('#energy-value'); // Изменено
+const $energyText = document.querySelector('#energy-value');  // Исправлено
+let energy = getEnergy();  // Инициализация глобальной переменной energy
 
 function getScore() {
     return Number(localStorage.getItem('score')) || 0;
@@ -17,15 +18,13 @@ function getEnergy() {
 }
 
 function setEnergy(newEnergy) {
-    energy = newEnergy;
+    energy = newEnergy;  // Обновляем глобальную переменную energy
     localStorage.setItem('energy', energy);
     updateEnergyBar();
 }
 
-
 function addOne() {
     setScore(getScore() + 1);
-    updateImage();
 }
 
 $clickableImage.addEventListener('click', (event) => {
@@ -63,7 +62,7 @@ $clickableImage.addEventListener('click', (event) => {
         }, 2000);
 
         // Уменьшение энергии при клике
-        setEnergy(energy - 1);
+        setEnergy(energy - 1);  // Обновление энергии при клике
     }
 });
 
@@ -75,13 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Логика для шкалы энергии
-let energy = getEnergy();
-let energyRegenInterval;
-
 function updateEnergyBar() {
     $energyBar.style.width = `${energy}%`;
-    $energyText.textContent = `${energy}/100`; // Изменено
-    if (energy <= 100) {
+    $energyText.textContent = `${energy}/100`;  // Исправлено
+    if (energy < 100) {
         clearInterval(energyRegenInterval);
         energyRegenInterval = setInterval(regenEnergy, 1200);
     } else if (energy >= 100) {
