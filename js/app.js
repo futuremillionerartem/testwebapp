@@ -1,8 +1,10 @@
 const $clickableImage = document.querySelector('#clickable-image');
 const $score = document.querySelector('#score');
 const $energyBar = document.querySelector('#energy-bar');
-const $energyText = document.querySelector('#energy-value');  // Исправлено
+const $energyText = document.querySelector('#energy-value');
 let energy = getEnergy();  // Инициализация глобальной переменной energy
+let energyRegenInterval;  // Переменная для хранения интервала восстановления энергии
+let regenDelayTimeout;  // Переменная для хранения таймера задержки
 
 function getScore() {
     return Number(localStorage.getItem('score')) || 0;
@@ -63,30 +65,41 @@ $clickableImage.addEventListener('click', (event) => {
 
         // Уменьшение энергии при клике
         setEnergy(energy - 1);  // Обновление энергии при клике
+
+        // Остановка восстановления при клике
+        clearInterval(energyRegenInterval);
+        energyRegenInterval = null;
+        clearTimeout(regenDelayTimeout);
+
+        // Установка таймера на возобновление восстановления через 1 секунду после последнего клика
+        regenDelayTimeout = setTimeout(() => {
+            startRegenEnergy();
+        }, 1000);
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     setScore(getScore());
-    updateImage();
-    // Инициализация энергии
     setEnergy(getEnergy());
 });
 
 // Логика для шкалы энергии
 function updateEnergyBar() {
     $energyBar.style.width = `${energy}%`;
-    $energyText.textContent = `${energy}/100`;  // Исправлено
-    if (energy < 100) {
-        clearInterval(energyRegenInterval);
-        energyRegenInterval = setInterval(regenEnergy, 1200);
-    } else if (energy >= 100) {
-        clearInterval(energyRegenInterval);
+    $energyText.textContent = `${energy}/100`;
+}
+
+function startRegenEnergy() {
+    if (!energyRegenInterval && energy < 100) {
+        energyRegenInterval = setInterval(regenEnergy, 1900);
     }
 }
 
 function regenEnergy() {
     if (energy < 100) {
         setEnergy(energy + 1);
+    } else {
+        clearInterval(energyRegenInterval);
+        energyRegenInterval = null;
     }
 }
