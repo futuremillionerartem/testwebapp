@@ -6,13 +6,18 @@ let energy = getEnergy();  // Инициализация глобальной п
 let energyRegenInterval;  // Переменная для хранения интервала восстановления энергии
 let regenDelayTimeout;  // Переменная для хранения таймера задержки
 
+document.addEventListener('DOMContentLoaded', () => {
+    setScore(getScore());  // Синхронизировать счёт сразу после загрузки страницы
+    setEnergy(getEnergy());  // Синхронизировать энергию
+});
+
 function getScore() {
     return Number(localStorage.getItem('score')) || 0;
 }
 
 function setScore(score) {
     localStorage.setItem('score', score);
-    $score.textContent = score;
+    document.querySelectorAll('#score').forEach(el => el.textContent = score); // Обновление счёта на всех страницах
 }
 
 function getEnergy() {
@@ -22,7 +27,7 @@ function getEnergy() {
 function setEnergy(newEnergy) {
     energy = newEnergy;  // Обновляем глобальную переменную energy
     localStorage.setItem('energy', energy);
-    updateEnergyBar();
+    updateEnergyBar();  // Обновление шкалы энергии
 }
 
 function addOne() {
@@ -76,11 +81,6 @@ $clickableImage.addEventListener('click', (event) => {
             startRegenEnergy();
         }, 1000);
     }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    setScore(getScore());
-    setEnergy(getEnergy());
 });
 
 // Логика для шкалы энергии
