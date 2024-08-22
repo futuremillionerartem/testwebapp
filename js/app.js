@@ -9,6 +9,11 @@ let regenDelayTimeout;  // Переменная для хранения тайм
 document.addEventListener('DOMContentLoaded', () => {
     setScore(getScore());  // Синхронизировать счёт сразу после загрузки страницы
     setEnergy(getEnergy());  // Синхронизировать энергию
+
+    // Проверка выполнения каждого задания
+    checkTaskCompletion('youtubeTask', document.querySelector('.youtube-task'));
+    checkTaskCompletion('telegramTask', document.querySelector('.telegram-task'));
+    checkTaskCompletion('discordTask', document.querySelector('.discord-task'));
 });
 
 function getScore() {
@@ -102,4 +107,54 @@ function regenEnergy() {
         clearInterval(energyRegenInterval);
         energyRegenInterval = null;
     }
+}
+
+// Функция для выполнения задания
+function completeTask(element, url, taskKey) {
+    // Проверяем, выполнено ли задание
+    if (localStorage.getItem(taskKey)) {
+        showMessage('Вы уже выполняли это задание!', event.clientX, event.clientY);
+        return;
+    }
+
+    const rewardText = element.querySelector('.task-reward').textContent.trim().replace(/\s/g, '');
+    const reward = parseInt(rewardText, 10);
+
+    // Добавление награды к балансу через 3 секунды
+    setTimeout(() => {
+        const currentScore = getScore();
+        setScore(currentScore + reward);
+
+        // Устанавливаем флаг выполнения задания
+        localStorage.setItem(taskKey, 'completed');
+
+        // Перенаправление по ссылке
+        window.location.href = url;
+    }, 3000);  // Задержка на 3 секунды
+}
+
+// Функция для проверки выполнения задания
+function checkTaskCompletion(taskKey, element) {
+    // Если задание выполнено, отключаем кнопку или скрываем её
+    if (localStorage.getItem(taskKey)) {
+        element.style.pointerEvents = 'none';
+        element.style.opacity = '0.5'; // Делаем кнопку полупрозрачной
+    }
+}
+
+// Функция для отображения сообщения на странице
+function showMessage(message, x, y) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('task-message');
+    messageElement.textContent = message;
+
+    // Устанавливаем позицию сообщения
+    messageElement.style.left = `${x}px`;
+    messageElement.style.top = `${y}px`;
+
+    document.body.appendChild(messageElement);
+
+    setTimeout(() => {
+        messageElement.remove();
+    }, 2000);  // Убираем сообщение через 2 секунды
 }
