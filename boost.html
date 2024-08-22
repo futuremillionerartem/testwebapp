@@ -39,7 +39,7 @@
             margin-bottom: -5%;
         }
         .header p {
-            font-size: 30px;
+            font-size: 24px;
         }
         .balance-info {
             display: flex;
@@ -51,11 +51,11 @@
             align-items: center;
             border-radius: 7px;
             margin-bottom: -9%;
-            height: 45px;
+            height: 30px;
             padding-top: 3%;
         }
         .balance-info img {
-            height: 30px;;
+            height: 22px;;
             margin-right: 20%;
             display: flex;
             align-items: center;
@@ -81,7 +81,7 @@
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 40px;
-            height: 50px;
+            height: 38px;
             align-items: center;
             width: 58%;
             margin-right: 2%;
@@ -94,7 +94,7 @@
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 40px;
-            height: 50px;
+            height: 38px;
             align-items: center;
             width: 40%;
         }
@@ -105,17 +105,19 @@
             color: #fff;
             padding: 10px;
             border-radius: 10px;
-            height: 70px;
+            height: 58px;
             align-items: center;
-            margin-top: 23%;
+            margin-top: 15.5%;
         }
         .menu-item img{
             margin: 0 auto;
-            height: 45px;
+            height: 38px;
             width: auto;
+            padding-top: 5%;
+            margin-top: -5%;
         }
         .menu-item p {
-            font-size: 19px;
+            font-size: 17px;
             color: #ffffff;
             -webkit-text-stroke: 0.8px #000000;
             margin-top: -4px;
@@ -127,7 +129,7 @@
         }
 
         .mini_token {
-            height: 36px;
+            height: 30px;
             margin-left: 0px;
             margin-right: 5px;
         }
@@ -188,8 +190,8 @@
             display: flex;
             justify-content: space-between;
             height: 40px;
-            margin-top: 10%;
-            margin-bottom: -10%;
+            margin-top: 7%;
+            margin-bottom: 2%;
         }
         .types {
             background-color: #818181;
@@ -200,6 +202,29 @@
             justify-content: center;
             border-radius: 8px;
         }
+
+
+        .task-message {
+            position: absolute;
+            font-family: 'Londrina Solid', sans-serif;
+            font-size: 18px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+            animation: move-up 2s ease forwards;
+            pointer-events: none; /* Чтобы сообщение не мешало кликам */
+        }
+
+        @keyframes move-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
         
         
 
@@ -248,32 +273,31 @@
             <div class="types">Leagues</div>
         </div>
 
-        <div class="button-container">
-            <div class="task-button">
-                <img src="templates/button-task.png" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Binance Registration</p>
-                    <p class="task-reward">200 000</p>
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+        <div class="task-button youtube-task" onclick="completeTask(this, 'https://youtube.com/@boston6917?si=BwhaCIdsm_ts6-1o', 'youtubeTask');">
+            <img src="templates/youtube.png" alt="Icon" class="icon">
+            <div class="task-info">
+                <p class="task-title">Watch Video</p>
+                <p class="task-reward">200 000</p>
             </div>
-            <div class="task-button">
-                <img src="templates/button-task.png" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Join Our Socials</p>
-                    <p class="task-reward">30 000</p>
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
-            </div>
-            <div class="task-button">
-                <img src="templates/button-task.png"" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Join Discord Server</p>
-                    <p class="task-reward">100 000</p>
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
-            </div>
+            <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
         </div>
+        <div class="task-button telegram-task" onclick="completeTask(this, 'https://t.me/cryptokryptoniann', 'telegramTask');">
+            <img src="templates/tg.png" alt="Icon" class="icon">
+            <div class="task-info">
+                <p class="task-title">Join Our Socials</p>
+                <p class="task-reward">30 000</p>
+            </div>
+            <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+        </div>
+        <div class="task-button discord-task" onclick="completeTask(this, 'https://discord.gg/99T7yyFj', 'discordTask');">
+            <img src="templates/discord.png" alt="Icon" class="icon">
+            <div class="task-info">
+                <p class="task-title">Join Discord Server</p>
+                <p class="task-reward">100 000</p>
+            </div>
+            <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+        </div>
+        
 
 
         <div class="down">
