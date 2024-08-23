@@ -113,7 +113,7 @@ function regenEnergy() {
 function completeTask(element, url, taskKey) {
     // Проверяем, выполнено ли задание
     if (localStorage.getItem(taskKey)) {
-        showMessage('Вы уже выполняли это задание!', event.clientX, event.clientY);
+        showMessage('Task Completed', event.clientX, event.clientY);
         return;
     }
 
