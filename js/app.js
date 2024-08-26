@@ -2,9 +2,24 @@ const $clickableImage = document.querySelector('#clickable-image');
 const $score = document.querySelector('#score');
 const $energyBar = document.querySelector('#energy-bar');
 const $energyText = document.querySelector('#energy-value');
+const $multitapButton = document.querySelector('.task-button1');
+const $multitapCost = document.querySelector('#multitap-cost');
+const $energyButton = document.querySelector('.task-button2');
+const $energyCost = document.querySelector('#energy-cost');
 let energy = getEnergy();  // Инициализация глобальной переменной energy
 let energyRegenInterval;  // Переменная для хранения интервала восстановления энергии
 let regenDelayTimeout;  // Переменная для хранения таймера задержки
+let costcliskpanda = Number(localStorage.getItem('costcliskpanda')) || 1; // Загружаем значение из localStorage или устанавливаем по умолчанию 1
+let notcostcliskpanda = costcliskpanda.toString();
+let energycount = 100;
+let energyreset = 30;
+
+
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     setScore(getScore());  // Синхронизировать счёт сразу после загрузки страницы
@@ -14,8 +29,139 @@ document.addEventListener('DOMContentLoaded', () => {
     checkTaskCompletion('youtubeTask', document.querySelector('.youtube-task'));
     checkTaskCompletion('telegramTask', document.querySelector('.telegram-task'));
     checkTaskCompletion('discordTask', document.querySelector('.discord-task'));
+    // Загрузка сохранённой стоимости multitap и синхронизация с интерфейсом
+    const savedCost = localStorage.getItem('multitapCost');
+    if (savedCost) {
+        $multitapCost.textContent = savedCost;
+    }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Загрузка сохранённой стоимости multitap и синхронизация с интерфейсом
+    const savedCost = localStorage.getItem('multitapCost');
+    if (savedCost) {
+        $multitapCost.textContent = savedCost;
+    }
+
+    $multitapButton.addEventListener('click', () => {
+        const currentCost = Number($multitapCost.textContent);
+        const currentScore = getScore();
+    
+        if (currentScore >= currentCost) {
+            // Уменьшаем баланс на стоимость multitap
+            setScore(currentScore - currentCost);
+    
+            // Увеличиваем переменную costcliskpanda на 1
+            costcliskpanda += 1;
+            localStorage.setItem('costcliskpanda', costcliskpanda); // Сохраняем значение в localStorage
+            notcostcliskpanda = costcliskpanda.toString();
+    
+            // Увеличиваем стоимость multitap и сохраняем её
+            const newCost = currentCost * 2;
+            $multitapCost.textContent = newCost;
+            localStorage.setItem('multitapCost', newCost);
+        } else {
+            alert('Недостаточно баланса для покупки!');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Загрузка сохранённой стоимости energy limit и синхронизация с интерфейсом
+    const savedEnergyCost = localStorage.getItem('energyCost');
+    if (savedEnergyCost) {
+        $energyCost.textContent = savedEnergyCost;
+    }
+
+    $energyButton.addEventListener('click', () => {
+        const currentEnergyCost = Number($energyCost.textContent);
+        const currentScore = getScore();
+
+        if (currentScore >= currentEnergyCost) {
+            // Уменьшаем баланс на стоимость Energy Limit
+            setScore(currentScore - currentEnergyCost);
+
+            // Увеличиваем переменную energycount на 500
+            energycount += 500;
+
+            // Увеличиваем стоимость Energy Limit и сохраняем её
+            const newEnergyCost = currentEnergyCost * 2;
+            $energyCost.textContent = newEnergyCost;
+            localStorage.setItem('energyCost', newEnergyCost);
+        } else {
+            alert('Недостаточно баланса для увеличения лимита энергии!');
+        }
+    });
+});
+
+
+// Функция для загрузки и установки сохранённого значения energycount
+function loadEnergyCount() {
+    const savedEnergyCount = localStorage.getItem('energyCount');
+    if (savedEnergyCount) {
+        energycount = Number(savedEnergyCount);
+    }
+}
+
+// Функция для сохранения значения energycount
+function saveEnergyCount() {
+    localStorage.setItem('energyCount', energycount);
+}
+
+// Обновляем интерфейс после загрузки страницы
+document.addEventListener('DOMContentLoaded', () => {
+    loadEnergyCount(); // Загрузка значения energycount при загрузке страницы
+
+    // Загрузка сохранённой стоимости energy limit и синхронизация с интерфейсом
+    const savedEnergyCost = localStorage.getItem('energyCost');
+    if (savedEnergyCost) {
+        $energyCost.textContent = savedEnergyCost;
+    }
+
+    $energyButton.addEventListener('click', () => {
+        const currentEnergyCost = Number($energyCost.textContent);
+        const currentScore = getScore();
+
+        if (currentScore >= currentEnergyCost) {
+            // Уменьшаем баланс на стоимость Energy Limit
+            setScore(currentScore - currentEnergyCost);
+
+            // Увеличиваем переменную energycount на 500
+            energycount += 500;
+            saveEnergyCount(); // Сохраняем новое значение energycount
+
+            // Увеличиваем стоимость Energy Limit и сохраняем её
+            const newEnergyCost = currentEnergyCost * 2;
+            $energyCost.textContent = newEnergyCost;
+            localStorage.setItem('energyCost', newEnergyCost);
+
+            // Обновляем интерфейс (например, шкалу энергии)
+            setEnergy(getEnergy()); // Пересчитываем энергию с новым лимитом
+        } else {
+            alert('Недостаточно баланса для увеличения лимита энергии!');
+        }
+    });
+
+    // Обновление шкалы энергии и текста на основе загруженного лимита
+    updateEnergyBar();
+});
+
+// Функции для работы с энергией
+function getEnergy() {
+    return Number(localStorage.getItem('energy')) || energycount;
+}
+
+function setEnergy(newEnergy) {
+    energy = Math.min(newEnergy, energycount);
+    localStorage.setItem('energy', energy);
+    updateEnergyBar();
+}
+
+// Обновление интерфейса энергии
+function updateEnergyBar() {
+    $energyBar.style.width = `${(energy / energycount) * 100}%`;
+    $energyText.textContent = `${energy}/${energycount}`;
+}
 function getScore() {
     return Number(localStorage.getItem('score')) || 0;
 }
@@ -25,18 +171,11 @@ function setScore(score) {
     document.querySelectorAll('#score').forEach(el => el.textContent = score); // Обновление счёта на всех страницах
 }
 
-function getEnergy() {
-    return Number(localStorage.getItem('energy')) || 100;  // по умолчанию 100
-}
 
-function setEnergy(newEnergy) {
-    energy = newEnergy;  // Обновляем глобальную переменную energy
-    localStorage.setItem('energy', energy);
-    updateEnergyBar();  // Обновление шкалы энергии
-}
+
 
 function addOne() {
-    setScore(getScore() + 1);
+    setScore(getScore() + costcliskpanda);
 }
 
 $clickableImage.addEventListener('click', (event) => {
@@ -61,7 +200,7 @@ $clickableImage.addEventListener('click', (event) => {
 
         const plusOne = document.createElement('div');
         plusOne.classList.add('plus-one');
-        plusOne.textContent = '+1';
+        plusOne.textContent = '+'+notcostcliskpanda;
         plusOne.style.left = `${event.clientX}px`;
         plusOne.style.top = `${event.clientY}px`;
 
@@ -74,7 +213,7 @@ $clickableImage.addEventListener('click', (event) => {
         }, 2000);
 
         // Уменьшение энергии при клике
-        setEnergy(energy - 1);  // Обновление энергии при клике
+        setEnergy(energy - costcliskpanda);  // Обновление энергии при клике
 
         // Остановка восстановления при клике
         clearInterval(energyRegenInterval);
@@ -90,22 +229,22 @@ $clickableImage.addEventListener('click', (event) => {
 
 // Логика для шкалы энергии
 function updateEnergyBar() {
-    $energyBar.style.width = `${energy}%`;
-    $energyText.textContent = `${energy}/100`;
-}
-
-function startRegenEnergy() {
-    if (!energyRegenInterval && energy < 100) {
-        energyRegenInterval = setInterval(regenEnergy, 1900);
-    }
+    $energyBar.style.width = `${(energy / energycount) * 100}%`;  // Показать процентное значение
+    $energyText.textContent = `${energy}/`+ energycount;  // Обновите текстовое отображение
 }
 
 function regenEnergy() {
-    if (energy < 100) {
-        setEnergy(energy + 1);
+    if (energy < energycount) {
+        setEnergy(energy + energyreset);
     } else {
         clearInterval(energyRegenInterval);
         energyRegenInterval = null;
+    }
+}
+
+function startRegenEnergy() {
+    if (!energyRegenInterval && energy < energycount) {
+        energyRegenInterval = setInterval(regenEnergy, 1900);
     }
 }
 
@@ -158,3 +297,4 @@ function showMessage(message, x, y) {
         messageElement.remove();
     }, 2000);  // Убираем сообщение через 2 секунды
 }
+
