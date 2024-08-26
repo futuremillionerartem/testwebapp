@@ -180,7 +180,29 @@
             margin-top: 17%;
         }
 
-        .task-button {
+        .task-button1{
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .task-button2 {
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .task-button3 {
             background-color: #1a1a1a;
             color: #fff;
             border-radius: 10px;
@@ -191,7 +213,15 @@
             transition: background-color 0.3s ease;
         }
 
-        .task-button:hover {
+
+
+        .task-button1:hover {
+            background-color: #333;
+        }
+        .task-button2:hover {
+            background-color: #333;
+        }
+        .task-button3:hover {
             background-color: #333;
         }
 
@@ -291,32 +321,32 @@
         </div>
 
         <div class="button-container">
-            <div class="task-button">
+            <div class="task-button1" id="multitap-button">
                 <img src="templates/hand.png" alt="Icon" class="icon">
                 <div class="task-info">
                     <p class="task-title">Multitap</p>
-                    <p class="task-reward">200 000</p>
+                    <p class="task-reward" id="multitap-cost">100</p> 
                 </div>
                 <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
             </div>
-            <div class="task-button">
+            <div class="task-button2">
                 <img src="templates/battery.png" alt="Icon" class="icon">
                 <div class="task-info">
                     <p class="task-title">Energy Limit</p>
-                    <p class="task-reward">30 000</p>
+                    <p class="task-reward" id="energy-cost">100</p>
                 </div>
                 <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
             </div>
-            <div class="task-button">
+            <div class="task-button3">
                 <img src="templates/boost-energy.png" alt="Icon" class="icon">
                 <div class="task-info">
                     <p class="task-title">Recovery Energy</p>
-                    <p class="task-reward">100 000</p>
+                    <p class="task-reward">100</p>
                 </div>
                 <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
             </div>
         </div>
-
+        
        
 
         <div class="down">
