@@ -16,26 +16,6 @@ let energyreset = 30;
 
 
 
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    setScore(getScore());  // Синхронизировать счёт сразу после загрузки страницы
-    setEnergy(getEnergy());  // Синхронизировать энергию
-
-    // Проверка выполнения каждого задания
-    checkTaskCompletion('youtubeTask', document.querySelector('.youtube-task'));
-    checkTaskCompletion('telegramTask', document.querySelector('.telegram-task'));
-    checkTaskCompletion('discordTask', document.querySelector('.discord-task'));
-    // Загрузка сохранённой стоимости multitap и синхронизация с интерфейсом
-    const savedCost = localStorage.getItem('multitapCost');
-    if (savedCost) {
-        $multitapCost.textContent = savedCost;
-    }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     // Синхронизация данных
     setScore(getScore());
