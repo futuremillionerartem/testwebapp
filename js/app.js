@@ -37,114 +37,119 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Загрузка сохранённой стоимости multitap и синхронизация с интерфейсом
+    // Синхронизация данных
+    setScore(getScore());
+    setEnergy(getEnergy());
+    loadEnergyCount();  // Загрузка значения energycount
+
+    // Синхронизация стоимости multitap
     const savedCost = localStorage.getItem('multitapCost');
     if (savedCost) {
         $multitapCost.textContent = savedCost;
     }
 
-    $multitapButton.addEventListener('click', () => {
+    // Синхронизация стоимости energy limit
+    const savedEnergyCost = localStorage.getItem('energyCost');
+    if (savedEnergyCost) {
+        $energyCost.textContent = savedEnergyCost;
+    }
+
+    // Проверка выполнения каждого задания
+    checkTaskCompletion('youtubeTask', document.querySelector('.youtube-task'));
+    checkTaskCompletion('telegramTask', document.querySelector('.telegram-task'));
+    checkTaskCompletion('discordTask', document.querySelector('.discord-task'));
+
+    // Обновление шкалы энергии
+    updateEnergyBar();
+
+    // Слушатели событий
+    $multitapButton.addEventListener('click', handleMultitapButtonClick);
+    $energyButton.addEventListener('click', handleEnergyButtonClick);
+    $clickableImage.addEventListener('click', handleClickableImageClick);
+
+    // Функции-обработчики
+    function handleMultitapButtonClick() {
         const currentCost = Number($multitapCost.textContent);
         const currentScore = getScore();
     
         if (currentScore >= currentCost) {
-            // Уменьшаем баланс на стоимость multitap
             setScore(currentScore - currentCost);
-    
-            // Увеличиваем переменную costcliskpanda на 1
             costcliskpanda += 1;
-            localStorage.setItem('costcliskpanda', costcliskpanda); // Сохраняем значение в localStorage
+            localStorage.setItem('costcliskpanda', costcliskpanda);
             notcostcliskpanda = costcliskpanda.toString();
-    
-            // Увеличиваем стоимость multitap и сохраняем её
+
             const newCost = currentCost * 2;
             $multitapCost.textContent = newCost;
             localStorage.setItem('multitapCost', newCost);
         } else {
             alert('Недостаточно баланса для покупки!');
         }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Загрузка сохранённой стоимости energy limit и синхронизация с интерфейсом
-    const savedEnergyCost = localStorage.getItem('energyCost');
-    if (savedEnergyCost) {
-        $energyCost.textContent = savedEnergyCost;
     }
 
-    $energyButton.addEventListener('click', () => {
+    function handleEnergyButtonClick() {
         const currentEnergyCost = Number($energyCost.textContent);
         const currentScore = getScore();
 
         if (currentScore >= currentEnergyCost) {
-            // Уменьшаем баланс на стоимость Energy Limit
             setScore(currentScore - currentEnergyCost);
-
-            // Увеличиваем переменную energycount на 500
             energycount += 500;
+            saveEnergyCount();
 
-            // Увеличиваем стоимость Energy Limit и сохраняем её
-            const newEnergyCost = currentEnergyCost * 2;
-            $energyCost.textContent = newEnergyCost;
-            localStorage.setItem('energyCost', newEnergyCost);
-        } else {
-            alert('Недостаточно баланса для увеличения лимита энергии!');
-        }
-    });
-});
-
-
-// Функция для загрузки и установки сохранённого значения energycount
-function loadEnergyCount() {
-    const savedEnergyCount = localStorage.getItem('energyCount');
-    if (savedEnergyCount) {
-        energycount = Number(savedEnergyCount);
-    }
-}
-
-// Функция для сохранения значения energycount
-function saveEnergyCount() {
-    localStorage.setItem('energyCount', energycount);
-}
-
-// Обновляем интерфейс после загрузки страницы
-document.addEventListener('DOMContentLoaded', () => {
-    loadEnergyCount(); // Загрузка значения energycount при загрузке страницы
-
-    // Загрузка сохранённой стоимости energy limit и синхронизация с интерфейсом
-    const savedEnergyCost = localStorage.getItem('energyCost');
-    if (savedEnergyCost) {
-        $energyCost.textContent = savedEnergyCost;
-    }
-
-    $energyButton.addEventListener('click', () => {
-        const currentEnergyCost = Number($energyCost.textContent);
-        const currentScore = getScore();
-
-        if (currentScore >= currentEnergyCost) {
-            // Уменьшаем баланс на стоимость Energy Limit
-            setScore(currentScore - currentEnergyCost);
-
-            // Увеличиваем переменную energycount на 500
-            energycount += 500;
-            saveEnergyCount(); // Сохраняем новое значение energycount
-
-            // Увеличиваем стоимость Energy Limit и сохраняем её
             const newEnergyCost = currentEnergyCost * 2;
             $energyCost.textContent = newEnergyCost;
             localStorage.setItem('energyCost', newEnergyCost);
 
-            // Обновляем интерфейс (например, шкалу энергии)
-            setEnergy(getEnergy()); // Пересчитываем энергию с новым лимитом
+            setEnergy(getEnergy());
         } else {
             alert('Недостаточно баланса для увеличения лимита энергии!');
         }
-    });
+    }
 
-    // Обновление шкалы энергии и текста на основе загруженного лимита
-    updateEnergyBar();
+    function handleClickableImageClick(event) {
+        if (energy > 0) {
+            const rect = $clickableImage.getBoundingClientRect();
+            const offsetX = event.clientX - rect.left - rect.width / 2;
+            const offsetY = event.clientY - rect.top - rect.height / 2;
+
+            const DEG = 40; 
+            const tiltX = (offsetY / rect.height) * DEG;
+            const tiltY = (offsetX / rect.width) * -DEG;
+
+            $clickableImage.style.setProperty('--tiltX', `${tiltX}deg`);
+            $clickableImage.style.setProperty('--tiltY', `${tiltY}deg`);
+
+            setTimeout(() => {
+                $clickableImage.style.setProperty('--tiltX', `0deg`);
+                $clickableImage.style.setProperty('--tiltY', `0deg`);
+            }, 300);
+
+            const plusOne = document.createElement('div');
+            plusOne.classList.add('plus-one');
+            plusOne.textContent = '+' + notcostcliskpanda;
+            plusOne.style.left = `${event.clientX}px`;
+            plusOne.style.top = `${event.clientY}px`;
+
+            $clickableImage.parentElement.appendChild(plusOne);
+
+            addOne();
+
+            setTimeout(() => {
+                plusOne.remove();
+            }, 2000);
+
+            setEnergy(energy - costcliskpanda);
+
+            clearInterval(energyRegenInterval);
+            energyRegenInterval = null;
+            clearTimeout(regenDelayTimeout);
+
+            regenDelayTimeout = setTimeout(() => {
+                startRegenEnergy();
+            }, 1000);
+        }
+    }
 });
+
 
 // Функции для работы с энергией
 function getEnergy() {
