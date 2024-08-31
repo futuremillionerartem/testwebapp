@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap" rel="stylesheet">
     <style>
-       body, html {
+        /* Основные стили */
+        body, html {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -36,7 +37,7 @@
             display: flex;
             text-align: center;
             margin-top: 10%;
-            margin-bottom: -7%;
+            margin-bottom: -5%;
         }
         .header p {
             font-size: 24px;
@@ -98,43 +99,6 @@
             align-items: center;
             width: 40%;
         }
-        .main-busters {
-            width: 100%;
-            display: flex;
-            text-align: center;
-            justify-content: center;
-            margin-top: 8%;
-            margin-bottom: -26%;
-        }
-        .main-busters p {
-            font-size: 16px;
-            text-align: left;
-        }
-        .buster-1{
-            display: flex;
-            justify-content: center;
-            background-color: #818181;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 45px;
-            height: 50px;
-            align-items: center;
-            width: 49%;
-            margin-right: 2%;
-        }
-        .buster-2 {
-            display: flex;
-            justify-content: center;
-            background-color: #818181;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 45px;
-            height: 50px;
-            align-items: center;
-            width: 49%;
-        }
         .down {
             display: flex;
             justify-content: space-between;
@@ -144,7 +108,7 @@
             border-radius: 10px;
             height: 58px;
             align-items: center;
-            margin-top: 27%;
+            margin-top: 33.5%;
         }
         .menu-item img{
             margin: 0 auto;
@@ -170,83 +134,103 @@
             margin-left: 0px;
             margin-right: 5px;
         }
-        .mini_token_boost{
-            height: 40px;
-            margin-left: 0px;
-            margin-right: 5px;
-        }
-        .button-container {
-            width: 100%;
-            margin-top: 17%;
-        }
 
-        .task-button {
-            background-color: #1a1a1a;
-            color: #fff;
+        /* Стили для новых блоков "My invite link" и "My Referrals" */
+        .invite-link-container {
+            background-color: #818181;
+            padding: 10px;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
         }
 
-        .task-button:hover {
-            background-color: #333;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
-        }
-
-        .task-info {
-            flex-grow: 1;
-        }
-
-        .task-title {
-            font-size: 18px;
+        .invite-link-container p {
             margin: 0;
+            font-size: 18px;
+            
+        }
+
+        .invite-link-container .copy-button {
+            background-color: #2d2d2d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .referrals-container {
+            background-color: #818181;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10%;
+        }
+
+        .referrals-container h3 {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
             text-align: left;
         }
 
-        .task-reward {
-            font-size: 14px;
-            margin: 5px 0 0 0;
+        .referral-item {
             display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .referral-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .referral-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .referral-item img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .down {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            height: 58px;
             align-items: center;
+            margin-top: -1%;
         }
 
-        .task-reward img {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
+        .menu-item img {
+            margin: 0 auto;
+            height: 38px;
+            width: auto;
+            padding-top: 5%;
+            margin-top: -5%;
         }
 
-        .arrow-icon {
-            width: 20px;
-            height: 20px;
+        .menu-item p {
+            font-size: 17px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+            margin-top: -4px;
         }
+
         .vl {
             border-left: 2px solid rgb(255, 255, 255);
             border-radius: 8px;
             height: 100%;
         }
-        .boost-p {
-            display: flex;
-            margin-bottom: -8%;
-            margin-top: 7%;
-        }
-        .boost-p2 {
-            display: flex;
-
-        }
-
-
-        
-        
-
     </style>
 </head>
 <body>
@@ -271,6 +255,10 @@
                 </div>
             </div>   
         </div>
+
+       
+
+        
         <div class="main-header">
             <div class="header">
                 <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
@@ -282,55 +270,42 @@
             </div>
         </div>
 
-        <p class="boost-p">Daily Boosters:</p>
-        <div class="main-busters">
-            <div class="buster-1">
-                <img src="templates/boost-rocket.png" alt="" class="mini_token_boost" id="token-icon">
-                <div class="bust-p">
-                    <p class="league">Extra Tap</p>
-                    <p>3/3</p>
-                </div>
-            </div>
-            <div class="buster-2">
-                <img src="templates/boost-energy.png" alt="" class="mini_token_boost" id="token-icon">
-                <div class="bust-p">
-                    <p class="league">Full Energy</p>
-                    <p>3/3</p>
-                </div>
-                
-            </div>
+        <!-- Новый блок "My invite link" -->
+        <div class="invite-link-container">
+            <p class="ptextlink">My invite link:</p>
+            <p class="plink">https://t.me/tapswap_bot?start=575052491</p>
+            <div class="copy-button">COPY</div>
         </div>
 
-        
-        <div class="button-container">
-            <p class="boost-p2">Boosters:</p>
-            <div class="task-button" id="multitap-button">
-                <img src="templates/hand.png" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Multitap</p>
-                    <p class="task-reward" id="multitap-cost">100</p> <!-- Этот элемент показывает текущую стоимость Multitap -->
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+        <!-- Новый блок "My Referrals" -->
+        <div class="referrals-container">
+            <h3>My Referrals:</h3>
+            <div class="referral-item">
+                <p>Dimash</p>
+                <p>20 000</p>
+                <p>+ 5 000</p>
             </div>
-            <div class="task-button">
-                <img src="templates/battery.png" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Energy Limit</p>
-                    <p class="task-reward">100</p>
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+            <div class="referral-item">
+                <p>Aleks</p>
+                <p>200 000</p>
+                <p>+ 10 000</p>
             </div>
-            <div class="task-button">
-                <img src="templates/boost-energy.png" alt="Icon" class="icon">
-                <div class="task-info">
-                    <p class="task-title">Recovery Energy</p>
-                    <p class="task-reward">100</p>
-                </div>
-                <img src="templates/Array.png" alt="Arrow" class="arrow-icon">
+            <div class="referral-item">
+                <p>Flow</p>
+                <p>10 000</p>
+                <p>+ 3 000</p>
+            </div>
+            <div class="referral-item">
+                <p>bostoN</p>
+                <p>20 290</p>
+                <p>+ 100 000</p>
+            </div>
+            <div class="referral-item">
+                <p>Lodik</p>
+                <p>63 060</p>
+                <p>+ 5 000</p>
             </div>
         </div>
-        
-       
 
         <div class="down">
             <div class="menu-item" onclick="location.href='index.html';">
@@ -348,7 +323,7 @@
                 <p>Ref</p>
             </div>
             <div class="vl"></div>
-            <div class="menu-item">
+            <div class="menu-item" onclick="location.href='task.html';">
                 <img src="templates/Rocket.png" alt="Boost Icon" url>
                 <p>Boost</p>
             </div>
