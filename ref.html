@@ -188,6 +188,12 @@
             margin-bottom: 0;
         }
 
+        .referral-list {
+            max-height: 200px; /* Фиксированная высота для скролла */
+            overflow-y: auto; /* Позволяет скроллить по вертикали */
+            border-radius: 5px;
+        }
+
         .referral-item p {
             margin: 0;
             font-size: 16px;
@@ -280,30 +286,32 @@
         <!-- Новый блок "My Referrals" -->
         <div class="referrals-container">
             <h3>My Referrals:</h3>
-            <div class="referral-item">
-                <p>Dimash</p>
-                <p>20 000</p>
-                <p>+ 5 000</p>
-            </div>
-            <div class="referral-item">
-                <p>Aleks</p>
-                <p>200 000</p>
-                <p>+ 10 000</p>
-            </div>
-            <div class="referral-item">
-                <p>Flow</p>
-                <p>10 000</p>
-                <p>+ 3 000</p>
-            </div>
-            <div class="referral-item">
-                <p>bostoN</p>
-                <p>20 290</p>
-                <p>+ 100 000</p>
-            </div>
-            <div class="referral-item">
-                <p>Lodik</p>
-                <p>63 060</p>
-                <p>+ 5 000</p>
+            <div class="referral-list">
+                <div class="referral-item">
+                    <p>Dimash</p>
+                    <p>20 000</p>
+                    <p>+ 5 000</p>
+                </div>
+                <div class="referral-item">
+                    <p>Aleks</p>
+                    <p>200 000</p>
+                    <p>+ 10 000</p>
+                </div>
+                <div class="referral-item">
+                    <p>Flow</p>
+                    <p>10 000</p>
+                    <p>+ 3 000</p>
+                </div>
+                <div class="referral-item">
+                    <p>bostoN</p>
+                    <p>20 290</p>
+                    <p>+ 100 000</p>
+                </div>
+                <div class="referral-item">
+                    <p>Lodik</p>
+                    <p>63 060</p>
+                    <p>+ 5 000</p>
+                </div>
             </div>
         </div>
 
