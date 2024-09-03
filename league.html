@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Кликер</title>
+    <link rel="stylesheet" href="styles/fix.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(255, 255, 255);
+            font-family: 'Londrina Solid', sans-serif;
+            user-select: none;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+        }
+
+        .container {
+            max-width: 95%;
+            max-height: 100%;
+            text-align: center;
+        }
+        .main-header {
+            width: 100%;
+            display: flex;
+            text-align: center;
+            margin-top: 10%;
+            margin-bottom: -5%;
+        }
+        .balance-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 12px;
+            padding: 3%;
+            align-items: center;
+            border-radius: 7px;
+            margin-bottom: -9%;
+            height: 30px;
+            padding-top: 3%;
+        }
+        .balance-info img {
+            height: 22px;
+            margin-right: 20%;
+            display: flex;
+            align-items: center;
+        }
+        .UP {
+            display: flex;
+            align-items: center;
+        }
+        .procent {
+            display: flex;
+            width: 90%;
+            justify-content: space-between;
+            font-size: 22px;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 38px;
+            align-items: center;
+            width: 58%;
+            margin-right: 1%;
+        }
+        .header-2 {
+            display: flex;
+            justify-content: center;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            height: 38px;
+            align-items: center;
+            width: 41%;
+        }
+
+        .menu-item {
+            text-align: center;
+            flex: 1;
+            margin-top: 10px;
+        }
+
+        .league-container {
+            text-align: center;
+            color: #000000;
+            margin-top: 0%;
+            margin-bottom: 15%;
+        }
+
+        .league-container img {
+            margin-bottom: 10px;
+        }
+
+        .league-title {
+            font-size: 36px;
+            color: #fff;
+            -webkit-text-stroke: 1.5px #000;
+            margin-bottom: 10px;
+        }
+
+        .league-description {
+            font-size: 18px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000;
+            margin-bottom: 20px;
+        }
+
+        .league-level {
+            font-size: 24px;
+            color: #fff;
+            -webkit-text-stroke: 1px #000;
+            margin-bottom: 10px;
+        }
+
+        .league-image {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .img_league {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arrow-left, .arrow-right {
+            font-size: 36px;
+            color: #000;
+            background-color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arrow-left {
+            position: absolute;
+            left: 0%;
+        }
+
+        .arrow-right {
+            position: absolute;
+            right: 0%;
+        }
+
+
+        .up {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .mini_token {
+            height: 30px;
+            margin-left: 0px;
+            margin-right: 5px;
+        }
+
+        .header p {
+            font-size: 24px;
+            -webkit-text-stroke: 0.8px #000000;
+        }
+
+        .down {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            height: 58px;
+            align-items: center;
+            margin-top: -1%;
+        }
+
+        .menu-item img {
+            margin: 0 auto;
+            height: 38px;
+            width: auto;
+            padding-top: 5%;
+            margin-top: -5%;
+        }
+
+        .menu-item p {
+            font-size: 17px;
+            color: #ffffff;
+            -webkit-text-stroke: 0.8px #000000;
+            margin-top: -4px;
+        }
+
+        .vl {
+            border-left: 2px solid rgb(255, 255, 255);
+            border-radius: 8px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="balance-info">
+            <div class="procent">
+                <div class="UP">
+                    <img src="templates/UP-coin.png" alt="">
+                    <p>2</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-diamond.png" alt="">
+                    <p>2</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-key.png" alt="">
+                    <p>16</p>
+                </div>
+                <div class="UP">
+                    <img src="templates/UP-frend.png" alt="">
+                    <p>0</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="header">
+                <img src="templates/Token.png" alt="" class="mini_token" id="token-icon">
+                <p id="score">0</p>
+            </div>
+            <div class="header-2">
+                <img src="templates/cup.png" alt="" class="mini_token" id="token-icon">
+                <p class="league">LEGENDARY</p>
+            </div>
+        </div>
+        <div class="league-container">
+            <h1 class="league-title">Silver League</h1>
+            <p class="league-description">Your number of shares determines the league you enter</p>
+            <div class="img_league">
+                <div class="arrow-left">&lt;</div> <!-- Left Arrow -->
+                <img src="templates/cup_league.png" alt="League Image" class="league-image">
+                <div class="arrow-right">&gt;</div> <!-- Right Arrow -->
+            </div>
+            
+            <p class="league-level">From 5 000</p>
+        </div>
+        <div class="down">
+            <div class="menu-item" onclick="location.href='index.html';">
+                <img src="templates/Tap.png" alt="Tap Icon">
+                <p>Tap</p>
+            </div>
+            <div class="vl"></div>
+            <div class="menu-item" onclick="location.href='boost.html';">
+                <img src="templates/Task.png" alt="Task Icon">
+                <p>Task</p>
+            </div>
+            <div class="vl"></div>
+            <div class="menu-item">
+                <img src="templates/Hyman.png" alt="Ref Icon">
+                <p>Ref</p>     
+            </div>
+            <div class="vl"></div>
+            <div class="menu-item" onclick="location.href='task.html';">
+                <img src="templates/Rocket.png" alt="Boost Icon">
+                <p>Boost</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
